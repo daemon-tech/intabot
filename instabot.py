@@ -4,8 +4,6 @@ from selenium.webdriver.common.keys import Keys
 import time
 import os
 
-#@arvndvv
-
 class InstaBot:
     def __init__(self,username,password):
         self.username=username
@@ -23,6 +21,7 @@ class InstaBot:
         
         email.clear()
         password.clear()
+        time.sleep(0.2)
         email.send_keys(self.username)
         password.send_keys(self.password)
         password.send_keys(Keys.RETURN)
@@ -62,14 +61,40 @@ class InstaBot:
                         time.sleep(5)
 
                 else:
-                    bot.close()    
+                    bot.close()
 
+    def follow(self, amount): #function for following
+    	bot = self.bot
+    	bot.get("https://www.instagram.com/")
+    	time.sleep(1)
+
+    	pyautogui.click(954, 720, button='left')
+    	print("Denied pop-up")
+    	time.sleep(0.5)
+    	bot.get("https://www.instagram.com/explore/people/suggested/")
+    	print("page found!")
+    	count=0
+    		
+    	for x in range(0, amount+1):
+    		next_coor = 268
+    		time.sleep(1)
+    		for i in range(0, 13+1):
+    			count += 1
+    			pyautogui.click(1205, next_coor, button='left')
+    			print("Action: Followed! -> ", end=" ")
+    			print(count)
+    			next_coor += 61 #parameter for the next follow button
+    			time.sleep(0.5)
+
+    		time.sleep(0.5)
+    		bot.get("https://www.instagram.com/explore/people/suggested/")
 
 ''' pyautogui for bypassing code filters and safer exploiting: use the driver at your left side pannel 
-    of your monitor! (or change the coordinates!)'''
+    of your monitor! (or change the coordinates!) FULLSCREEN FOR FOLLOW '''
 
 if __name__ == '__main__':
     os.system("cls") # can get changed to os.system("clear") at unix[...]
-    obj = InstaBot('yourusername','yourpassword') #username and passwd of your account
+    obj = InstaBot('username','password') #username and passwd of your account
     obj.login()
-    obj.like_post('hashtagofyourdesire') #the hastag
+    #obj.like_post('try') #the hastag
+    obj.follow(100)
