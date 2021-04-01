@@ -1,5 +1,5 @@
 # intabot
-# I coded this in a few hours for testing reasons but it ended up working quite well if you use the right coordinates.
+# I coded this in a few minutes for testing reasons but it ended up working quite well if you use the right coordinates.
 #
 # For effective clicking, place the coordinates on the picture instead of the heart-icon because the heart-icon position could change several times, therefor place it on # the upper side of the picture/image
 #
